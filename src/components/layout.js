@@ -7,25 +7,25 @@
 
 import React from "react"
 import PropTypes from "prop-types"
-import { useStaticQuery, graphql } from "gatsby"
 
-import Header from "./header"
+import TopBar from "./header"
 import "./layout.css"
+import "semantic-ui-css/semantic.min.css"
+import AniLink from "gatsby-plugin-transition-link/AniLink"
+import { Header } from "semantic-ui-react"
 
 const Layout = ({ children }) => {
-  const data = useStaticQuery(graphql`
-    query SiteTitleQuery {
-      site {
-        siteMetadata {
-          title
-        }
-      }
-    }
-  `)
-
   return (
     <>
-      <Header siteTitle={data.site.siteMetadata.title} />
+      <TopBar
+        content={
+          <Header as="h1">
+            <AniLink cover bg="#ffdb01" duration={0.5} to="/">
+              Inicio
+            </AniLink>
+          </Header>
+        }
+      />
       <div
         style={{
           margin: `0 auto`,
@@ -35,11 +35,7 @@ const Layout = ({ children }) => {
         }}
       >
         <main>{children}</main>
-        <footer>
-          © {new Date().getFullYear()}, Built with
-          {` `}
-          <a href="https://www.gatsbyjs.org">Gatsby</a>
-        </footer>
+        <footer>©{new Date().getFullYear()} Reflect Partners</footer>
       </div>
     </>
   )
