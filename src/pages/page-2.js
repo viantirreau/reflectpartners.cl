@@ -2,10 +2,10 @@ import React from "react"
 
 import SEO from "../components/seo"
 import AniLink from "gatsby-plugin-transition-link/AniLink"
-import Layout from "../components/layout"
+import Layout from "../components/Layout"
 
-const SecondPage = () => (
-  <Layout>
+const SecondPage = ({ location }) => (
+  <Layout location={location}>
     <SEO title="Page two" />
     <h1>Hi from the second page</h1>
     <p>Welcome to page 2</p>

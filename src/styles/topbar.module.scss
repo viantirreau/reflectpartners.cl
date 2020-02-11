@@ -1,0 +1,40 @@
+$animate: all 0.3s 0.1s ease-out;
+.link {
+  color: #444;
+  transition: $animate;
+  &:before,
+  &:after {
+    content: "";
+    position: absolute;
+    bottom: 5px;
+    width: 0px;
+    height: 2px;
+    margin: 5px 0 0;
+    transition: $animate;
+    transition-duration: 0.25s;
+    opacity: 90;
+    background-color: black;
+  }
+  &:before {
+    left: 50%;
+  }
+  &:after {
+    right: 50%;
+  }
+}
+
+.link:hover,
+.link.active {
+  color: #222;
+  cursor: pointer;
+  &:before,
+  &:after {
+    width: 41%;
+    opacity: 1;
+  }
+}
+
+.topbar {
+  background-color: #ffdb01 !important;
+  padding: 1em 0 1em 0;
+}
