@@ -3,24 +3,27 @@
   white-space: nowrap;
   transition: all 1s 0.5s cubic-bezier(0.6, 0.2, 0.1, 1);
 }
+
 .delay1 {
   transition-delay: 0.5s;
   -webkit-transition-delay: 0.5s;
 }
+
 .delay2 {
   transition-delay: 1s;
   -webkit-transition-delay: 1s;
 }
+
 .delay3 {
   transition-delay: 1.5s;
   -webkit-transition-delay: 1.5s;
 }
+
 .catch-container {
   height: 45em;
   position: relative;
   display: flex;
   align-items: center;
-  height: 40rem;
-  padding: 7rem 0;
+  padding: 7rem 0 0 0 !important;
   margin: auto;
 }

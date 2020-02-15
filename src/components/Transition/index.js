@@ -1,6 +1,6 @@
 import React, { Component } from "react"
 import TransitionLink, { TransitionPortal } from "gatsby-plugin-transition-link"
-import { TimelineMax, Power1 } from "gsap"
+import gsap from "gsap"
 
 export default class Cover extends Component {
   constructor(props) {
@@ -19,19 +19,21 @@ export default class Cover extends Component {
     const wait = seconds / 6
     const half = (seconds - wait) / 2
 
-    return new TimelineMax()
+    return gsap
+      .timeline()
       .set(this.cover, { y: 0, x: directionFrom, display: "block" })
-      .to(this.cover, half, {
+      .to(this.cover, {
         x: "0%",
-        ease: Power1.easeInOut,
+        ease: "power1.easeInOut",
+        duration: half,
       })
       .set(node, { opacity: 0 })
       .to(
         this.cover,
-        half,
         {
           x: directionTo,
-          ease: Power1.easeInOut,
+          ease: "power1.easeInOut",
+          duration: half,
         },
         `+=${wait}`
       )
@@ -44,19 +46,21 @@ export default class Cover extends Component {
     const wait = seconds / 6
     const half = (seconds - wait) / 2
 
-    return new TimelineMax()
+    return gsap
+      .timeline()
       .set(this.cover, { y: directionFrom })
-      .to(this.cover, half, {
+      .to(this.cover, {
         y: "0%",
-        ease: Power1.easeInOut,
+        ease: "power1.easeInOut",
+        duration: half,
       })
       .set(node, { opacity: 0 })
       .to(
         this.cover,
-        half,
         {
           y: directionTo,
-          ease: Power1.easeIn,
+          ease: "power1.easeIn",
+          duration: half,
         },
         `+=${wait}`
       )
@@ -71,7 +75,7 @@ export default class Cover extends Component {
 
   render() {
     const direction = this.props.direction || "left"
-    const length = this.props.duration || 0.5
+    const length = this.props.duration || 0.7
     const state = this.props.state
     const {
       exit: removedExit,

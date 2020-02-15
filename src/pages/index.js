@@ -12,9 +12,9 @@ const IndexPage = ({ location }) => (
       <Layout location={location}>
         <SEO title="#ReflejaTuAlegría" />
         {/* entry.state.disableFirstAnimation */}
-        <Grid columns={3} stackable className={indexStyles.catchContainer}>
+        <Grid columns={3} className={indexStyles.catchContainer}>
           <Grid.Row>
-            <Grid.Column textAlign="center" width={6}>
+            <Grid.Column textAlign="center" computer={6} mobile={16}>
               <Header
                 as="h1"
                 className={`${indexStyles.catch} ${indexStyles.delay1}`}
@@ -22,7 +22,7 @@ const IndexPage = ({ location }) => (
                 Refleja
               </Header>
             </Grid.Column>
-            <Grid.Column textAlign="center" width={4}>
+            <Grid.Column textAlign="center" computer={4} mobile={16}>
               <Header
                 as="h1"
                 className={`${indexStyles.catch} ${indexStyles.delay2}`}
@@ -30,7 +30,7 @@ const IndexPage = ({ location }) => (
                 Tu
               </Header>
             </Grid.Column>
-            <Grid.Column textAlign="center" width={6}>
+            <Grid.Column textAlign="center" computer={6} mobile={16}>
               <Header
                 as="h1"
                 className={`${indexStyles.catch} ${indexStyles.delay3}`}
