@@ -13,6 +13,7 @@ import "./layout.css"
 import "semantic-ui-css/semantic.min.css"
 import { Container } from "semantic-ui-react"
 import TopBar from "../Header"
+import Footer from "../Footer"
 
 const Layout = ({ location, children }) => {
   return (
@@ -28,12 +29,12 @@ const Layout = ({ location, children }) => {
         style={{
           margin: `0 auto`,
           maxWidth: 1200,
-          padding: `0px 1.0875rem 1.45rem`,
-          paddingTop: 0,
+          padding: `0 1.0875rem 1.45rem 0`,
         }}
       >
         <Container text>{children}</Container>
       </div>
+      <Footer />
     </>
   )
 }
