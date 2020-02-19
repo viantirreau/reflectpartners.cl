@@ -1,144 +1,59 @@
-import React, { useState, useEffect } from "react"
-import { Link, withPrefix } from "gatsby"
-import {
-  Menu,
-  Container,
-  Icon,
-  Portal,
-  Segment,
-  Divider,
-  Button,
-  Header,
-} from "semantic-ui-react"
-import styled from "styled-components"
+import React from "react"
+import { slide as Menu } from "react-burger-menu"
+import Cover from "../Transition"
 
-const StyledLink = styled(Link)`
-  font-weight: bold;
-  text-align: center;
-  font-size: 2em;
-  &:hover {
-    text-decoration: underline;
+class MobileMenu extends React.Component {
+  render() {
+    var styles = {
+      bmBurgerButton: {
+        position: "fixed",
+        width: "36px",
+        height: "30px",
+        right: "36px",
+        top: "36px",
+      },
+      bmBurgerBars: {
+        background: "#373a47",
+      },
+      bmBurgerBarsHover: {
+        background: "#a90000",
+      },
+      bmCrossButton: {
+        height: "24px",
+        width: "24px",
+      },
+      bmCross: {
+        background: "#bdc3c7",
+      },
+      bmMenuWrap: {
+        position: "fixed",
+        height: "90%",
+        marginTop: "10px",
+      },
+      bmMenu: {
+        background: "#373a47",
+        padding: "2.5em 1.5em 0",
+        fontSize: "1.15em",
+      },
+      bmMorphShape: {
+        fill: "#373a47",
+      },
+      bmItemList: {
+        color: "#b8b7ad",
+        padding: "0.8em",
+      },
+      bmItem: {
+        display: "inline-block",
+      },
+      bmOverlay: {
+        background: "rgba(0,0,0,0.2)",
+      },
+    }
+    return (
+      <Menu styles={styles} right outerContainerId={"content"}>
+        <Cover to="/">Inicio</Cover>
+      </Menu>
+    )
   }
-`
-
-const BurgerButton = styled(Button)`
-  &&& {
-    font-size: 1rem;
-    padding: 0.785em 1.5em;
-    box-shadow: 0 0 0 1px transparent inset,
-      0 0 0 0 rgba(34, 36, 38, 0.15) inset;
-  }
-`
-const CloseButton = styled(BurgerButton)`
-  &&& {
-    position: absolute;
-    top: -4em;
-    right: 0em;
-    padding: 0.5em;
-    font-size: 1.5em;
-    width: 2em;
-    height: 2em;
-  }
-`
-
-const StyledSegment = styled(Segment)`
-  &&& {
-    position: fixed;
-    top: -1em;
-    left: 0vw;
-    z-index: 1000;
-    width: 100vw;
-    height: 110vh;
-  }
-`
-
-const StyledContainer = styled.div`
-  &&& {
-    margin-top: 6em;
-    text-align: center;
-    position: relative;
-  }
-`
-
-const StyledDivider = styled(Divider)`
-  &&& {
-    margin: 2em;
-  }
-`
-
-const MobileMenu = ({ location: { pathname } }) => {
-  const [activeItem, setActiveItem] = useState(pathname)
-  const [open, setOpen] = useState(false)
-
-  useEffect(() => {
-    setActiveItem(pathname)
-  }, [pathname])
-
-  const handleClick = () => setOpen(!open)
-
-  const handleClose = () => setOpen(false)
-
-  return (
-    <Menu size="huge" borderless pointing>
-      <Container text>
-        <Menu.Item
-          as={Link}
-          to="/"
-          header
-          active={activeItem === withPrefix("/")}
-        ></Menu.Item>
-        <Menu.Menu position="right">
-          <Menu.Item position="right">
-            <BurgerButton
-              basic
-              onClick={handleClick}
-              aria-label="Abrir menú de navegación"
-            >
-              <Icon fitted name="bars" />
-            </BurgerButton>
-          </Menu.Item>
-        </Menu.Menu>
-        <Portal closeOnEscape onClose={handleClose} open={open}>
-          <StyledSegment
-            className
-            role="dialog"
-            aria-label="Menú de navegación"
-          >
-            <StyledContainer>
-              <CloseButton
-                aria-label="Cerrar"
-                basic
-                circular
-                onClick={handleClose}
-              >
-                X
-              </CloseButton>
-              <StyledLink to="/" onClick={handleClose}>
-                Inicio
-              </StyledLink>
-              <StyledDivider />
-              <Header
-                as="h1"
-                textAlign="center"
-                style={{
-                  marginBottom: "1em",
-                }}
-              >
-                <Header.Content
-                  style={{
-                    width: "60%",
-                    margin: "0 auto",
-                  }}
-                >
-                  Categorías
-                </Header.Content>
-              </Header>
-            </StyledContainer>
-          </StyledSegment>
-        </Portal>
-      </Container>
-    </Menu>
-  )
 }
-
 export default MobileMenu

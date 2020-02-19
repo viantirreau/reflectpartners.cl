@@ -6,41 +6,28 @@
  */
 
 import React from "react"
-import PropTypes from "prop-types"
-import Headroom from "react-headroom"
 
-import "./layout.css"
 import "semantic-ui-css/semantic.min.css"
-import { Container } from "semantic-ui-react"
+import "./layout.css"
 import TopBar from "../Header"
 import Footer from "../Footer"
 
 const Layout = ({ location, children }) => {
   return (
     <>
-      <Headroom
-        upTolerance={10}
-        downTolerance={10}
-        style={{ zIndex: "20", height: "8em" }}
-      >
-        <TopBar location={location} />
-      </Headroom>
-      <div
-        style={{
-          margin: `0 auto`,
-          maxWidth: 1200,
-          padding: `0 1.0875rem 1.45rem 0`,
-        }}
-      >
-        <Container text>{children}</Container>
+      <TopBar location={location} />
+      <div id="content">
+        <div
+          style={{
+            margin: `0 auto`,
+          }}
+        >
+          {children}
+        </div>
+        <Footer />
       </div>
-      <Footer />
     </>
   )
-}
-
-Layout.propTypes = {
-  children: PropTypes.node.isRequired,
 }
 
 export default Layout

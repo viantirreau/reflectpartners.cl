@@ -59,44 +59,52 @@ const Contact = ({ centered }) => (
   </>
 )
 
-const Footer = () => {
-  return (
-    <footer className={footerStyles.footer}>
-      <Responsive minWidth={600}>
-        <Grid container style={{ maxWidth: "1200px" }}>
-          <Grid.Row centered>
-            <Grid.Column textAlign="center" computer={6} tablet={6} mobile={16}>
-              <FooterLogo />
-            </Grid.Column>
-            <Grid.Column computer={4} tablet={4} mobile={8}>
-              <ProdServ />
-            </Grid.Column>
-            <Grid.Column computer={5} tablet={5} mobile={8}>
-              <Contact />
-            </Grid.Column>
-          </Grid.Row>
-        </Grid>
-      </Responsive>
-      <Responsive maxWidth={599}>
-        <Grid container style={{ maxWidth: "1200px" }}>
-          <Grid.Row>
-            <Grid.Column textAlign="center" mobile={16}>
-              <FooterLogo />
-            </Grid.Column>
-            <Grid.Column mobile={16} textAlign="center">
-              <ProdServ />
-            </Grid.Column>
-            <Grid.Column mobile={16} textAlign="center">
-              <Contact centered />
-            </Grid.Column>
-          </Grid.Row>
-        </Grid>
-      </Responsive>
-      <Divider horizontal inverted>
-        &copy; Reflect Partners {}
-      </Divider>
-    </footer>
-  )
+class Footer extends React.Component {
+  state = {}
+  handleOnUpdate = (e, { width }) => this.setState({ width })
+  render() {
+    const { width } = this.state
+    const textAlign = width >= 600 ? "left" : "center"
+    const mobile = width >= 600 ? 8 : 16
+    const centered = width < 600
+    return (
+      <footer className={footerStyles.footer}>
+        <Responsive fireOnMount onUpdate={this.handleOnUpdate}>
+          <Grid container style={{ maxWidth: "1200px" }}>
+            <Grid.Row centered>
+              <Grid.Column
+                textAlign="center"
+                computer={6}
+                tablet={6}
+                mobile={16}
+              >
+                <FooterLogo />
+              </Grid.Column>
+              <Grid.Column
+                computer={4}
+                tablet={4}
+                mobile={mobile}
+                textAlign={textAlign}
+              >
+                <ProdServ />
+              </Grid.Column>
+              <Grid.Column
+                computer={5}
+                tablet={5}
+                mobile={mobile}
+                textAlign={textAlign}
+              >
+                <Contact centered={centered} />
+              </Grid.Column>
+            </Grid.Row>
+          </Grid>
+        </Responsive>
+        <Divider horizontal inverted>
+          &copy; Reflect Partners {}
+        </Divider>
+      </footer>
+    )
+  }
 }
 
 export default Footer
