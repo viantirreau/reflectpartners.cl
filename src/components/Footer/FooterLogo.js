@@ -1,7 +1,15 @@
 import React from "react"
 import Logo from "../../images/rp-logo.svg"
 import { Icon } from "semantic-ui-react"
-import footerStyles from "../../styles/footer.module.scss"
+import styled from "styled-components"
+
+const StyledIconContainer = styled.a`
+  color: #ffdb01;
+  margin: 0.5em;
+  &:hover {
+    color: #ffe96a;
+  }
+`
 
 const FooterLogo = () => {
   return (
@@ -14,28 +22,23 @@ const FooterLogo = () => {
         ></img>
       </div>
       <div>
-        <a
+        <StyledIconContainer
           href="https://www.facebook.com/reflectpartners.cl/"
-          className={footerStyles.icon}
           target="_blank"
           rel="noopener noreferrer"
         >
           <Icon name="facebook" size="big"></Icon>
-        </a>
-        <a
+        </StyledIconContainer>
+        <StyledIconContainer
           href="https://www.instagram.com/reflectpartners.cl/"
-          className={footerStyles.icon}
           target="_blank"
           rel="noopener noreferrer"
         >
           <Icon name="instagram" size="big"></Icon>
-        </a>
-        <a
-          href="mailto:contacto@reflectpartners.cl"
-          className={footerStyles.icon}
-        >
+        </StyledIconContainer>
+        <StyledIconContainer href="mailto:contacto@reflectpartners.cl">
           <Icon name="mail" size="big"></Icon>
-        </a>
+        </StyledIconContainer>
       </div>
     </div>
   )

@@ -1,5 +1,4 @@
 import React from "react"
-import footerStyles from "../../styles/footer.module.scss"
 import { Grid, Divider, Responsive } from "semantic-ui-react"
 import FooterLogo from "./FooterLogo"
 import { Title, Item, WhiteTitle } from "./LinkList"
@@ -12,6 +11,11 @@ const ContactLink = styled.a`
   &:hover {
     color: #fff !important;
   }
+`
+const StyledFooter = styled.footer`
+  padding: 60px 20px;
+  background: #1d2126;
+  font-size: 1.2em;
 `
 
 const ProdServ = () => (
@@ -68,7 +72,7 @@ class Footer extends React.Component {
     const mobile = width >= 600 ? 8 : 16
     const centered = width < 600
     return (
-      <footer className={footerStyles.footer}>
+      <StyledFooter>
         <Responsive fireOnMount onUpdate={this.handleOnUpdate}>
           <Grid container style={{ maxWidth: "1200px" }}>
             <Grid.Row centered>
@@ -102,7 +106,7 @@ class Footer extends React.Component {
         <Divider horizontal inverted>
           &copy; Reflect Partners {}
         </Divider>
-      </footer>
+      </StyledFooter>
     )
   }
 }
