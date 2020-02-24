@@ -4,6 +4,12 @@ import FooterLogo from "./FooterLogo"
 import { Title, Item, WhiteTitle } from "./LinkList"
 import styled from "styled-components"
 
+const getWidth = () => {
+  const isSSR = typeof window === "undefined"
+
+  return isSSR ? Responsive.onlyComputer.minWidth : window.innerWidth
+}
+
 const ContactLink = styled.a`
   color: #ddd !important;
   padding-left: ${props => (props.centered ? "0" : "0.2em")};
@@ -73,7 +79,11 @@ class Footer extends React.Component {
     const centered = width < 600
     return (
       <StyledFooter>
-        <Responsive fireOnMount onUpdate={this.handleOnUpdate}>
+        <Responsive
+          fireOnMount
+          onUpdate={this.handleOnUpdate}
+          getWidth={getWidth}
+        >
           <Grid container style={{ maxWidth: "1200px" }}>
             <Grid.Row centered>
               <Grid.Column

@@ -18,9 +18,6 @@ class IndexPage extends React.Component {
   }
   componentDidMount() {
     this.setState({ grow: true })
-    // setTimeout(() => {
-    //   this.setState({ wrapperBg: "#ffdb01" })
-    // }, 100)
     setTimeout(() => {
       this.setState({ wrapperBg: "transparent" })
     }, 400)
@@ -33,7 +30,11 @@ class IndexPage extends React.Component {
       <TransitionState>
         {({ entry }) => (
           <>
-            <PageLoader finished={this.state.finished}>
+            <PageLoader
+              finished={
+                this.state.finished || entry.state.disableFirstAnimation
+              }
+            >
               <PageLoaderWrapper
                 bg={this.state.wrapperBg}
                 finished={this.state.finished}

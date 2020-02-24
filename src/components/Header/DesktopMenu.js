@@ -1,11 +1,16 @@
 import React from "react"
 import { Menu, Container } from "semantic-ui-react"
 import MenuLink from "./DesktopMenuLink"
-import BarStyles from "../../styles/topbar.module.scss"
+import styled from "styled-components"
+
+const StyledMenu = styled(({ colored, ...props }) => <Menu {...props} />)`
+  background-color: ${props => (props.colored ? "#ffdb01 !important" : "")};
+  padding: 1em 0 1em 0;
+`
 
 const DesktopMenu = ({ location: { pathname }, colored = true }) => {
   return (
-    <Menu size="huge" borderless className={colored ? BarStyles.topbar : ""}>
+    <StyledMenu size="huge" borderless colored={colored}>
       <Container text>
         <Menu.Item header>
           <MenuLink
@@ -21,7 +26,7 @@ const DesktopMenu = ({ location: { pathname }, colored = true }) => {
           </Menu.Item>
         </Menu.Menu>
       </Container>
-    </Menu>
+    </StyledMenu>
   )
 }
 
