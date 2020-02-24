@@ -9,6 +9,9 @@ import {
   PageLoaderWrapper,
   PageLoaderRipple,
 } from "../components/GrowCircle"
+import TextImageHalf from "../components/TextImageHalf"
+import { useStaticQuery, graphql } from "gatsby"
+import Spacer from "../components/Spacer"
 
 class IndexPage extends React.Component {
   constructor(props) {
@@ -47,6 +50,8 @@ class IndexPage extends React.Component {
               <CatchPhrase
                 disableFirstAnimation={entry.state.disableFirstAnimation}
               />
+              <Spacer pixels={50} />
+              <Experiencia />
             </Layout>
           </>
         )}
@@ -54,4 +59,27 @@ class IndexPage extends React.Component {
     )
   }
 }
+
 export default IndexPage
+
+const Experiencia = () => {
+  const data = useStaticQuery(graphql`
+    query MyQuery {
+      file(relativePath: { eq: "rp-icon.png" }) {
+        childImageSharp {
+          # Specify the image processing specifications right in the query.
+          fluid {
+            ...GatsbyImageSharpFluid
+          }
+        }
+      }
+    }
+  `)
+  return (
+    <TextImageHalf
+      header="Haz que tu evento sea inolvidable"
+      text="Lorem"
+      image={data.file.childImageSharp.fluid}
+    />
+  )
+}
