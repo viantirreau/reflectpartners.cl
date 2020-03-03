@@ -1,6 +1,5 @@
 import React from "react"
 import { Grid, Header } from "semantic-ui-react"
-import Img from "gatsby-image"
 import styled from "styled-components"
 import Spacer from "../Spacer"
 
@@ -13,16 +12,16 @@ const StyledImageContainer = styled.div`
 `
 const StyledHeader = styled(Header)`
   &&& {
-    font-size: calc(3em + 1vw);
-    font-weight: 800;
-    font-family: "Lato Black";
+    font-size: calc(1.8em + 1.3vw);
+    font-weight: 900;
+    font-family: "Lato";
   }
 `
 const StyledSubHeader = styled(Header.Subheader)`
   &&&& {
     color: rgba(0, 0, 0, 0.8);
-    font-weight: 600;
-    font-size: calc(0.4em + 0.3vw);
+    font-weight: 500;
+    font-size: calc(0.5em + 0.3vw);
   }
 `
 
@@ -39,9 +38,7 @@ const TextImageHalf = ({ header, text, image, bg }) => {
         </StyledTextContainer>
       </Grid.Column>
       <Grid.Column>
-        <StyledImageContainer bg={bg}>
-          <Img fluid={image} alt={header} />
-        </StyledImageContainer>
+        <StyledImageContainer bg={bg}>{image}</StyledImageContainer>
       </Grid.Column>
     </Grid>
   )

@@ -13,7 +13,7 @@ const Header = ({ location }) => {
   const Desktop = isSSR ? (
     ""
   ) : (
-    <Headroom upTolerance={20}>
+    <Headroom upTolerance={20} style={{ background: "#ffdb01" }}>
       <DesktopMenu location={location} />
     </Headroom>
   )

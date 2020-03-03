@@ -12,6 +12,8 @@ import {
 import TextImageHalf from "../components/TextImageHalf"
 import { useStaticQuery, graphql } from "gatsby"
 import Spacer from "../components/Spacer"
+import Img from "gatsby-image"
+import Carousel from "../components/Carousel"
 
 class IndexPage extends React.Component {
   constructor(props) {
@@ -75,11 +77,21 @@ const Experiencia = () => {
       }
     }
   `)
+  const gallery = (
+    <Img fluid={data.file.childImageSharp.fluid} alt="Con Reflect Partners" />
+  )
+  const gallery2 = (
+    <Carousel>
+      {gallery}
+      {gallery}
+      {gallery}
+    </Carousel>
+  )
   return (
     <TextImageHalf
       header="Haz que tu evento sea inolvidable"
       text="Lorem"
-      image={data.file.childImageSharp.fluid}
+      image={gallery2}
     />
   )
 }
