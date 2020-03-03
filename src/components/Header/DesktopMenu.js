@@ -21,11 +21,17 @@ class DesktopMenu extends React.Component {
     super(props)
     this.pathname = props.location.pathname
     this.colored = props.colored || true
-    this.state = { hidden: true }
+    if (this.pathname === "/") {
+      this.state = { hidden: true }
+    } else {
+      this.state = { hidden: false }
+    }
   }
 
   componentWillMount() {
-    setTimeout(() => this.setState({ hidden: false }), 2400)
+    if (this.pathname === "/") {
+      setTimeout(() => this.setState({ hidden: false }), 2400)
+    }
   }
 
   render() {

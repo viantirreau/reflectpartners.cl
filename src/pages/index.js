@@ -14,6 +14,7 @@ import { useStaticQuery, graphql } from "gatsby"
 import Spacer from "../components/Spacer"
 import Img from "gatsby-image"
 import Carousel from "../components/Carousel"
+import AnimatedDownArrow from "../components/AnimatedDownArrow"
 
 class IndexPage extends React.Component {
   constructor(props) {
@@ -51,7 +52,9 @@ class IndexPage extends React.Component {
               <SEO title="#ReflejaTuAlegría" />
               <CatchPhrase
                 disableFirstAnimation={entry.state.disableFirstAnimation}
-              />
+              >
+                <AnimatedDownArrow />
+              </CatchPhrase>
               <Spacer pixels={50} />
               <Experiencia />
             </Layout>

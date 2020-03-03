@@ -5,8 +5,11 @@ import { fadeInUp } from "react-animations"
 const fadeAnimation = keyframes`${fadeInUp}`
 const FadedHeader = styled.h1`
   animation: 1s ${fadeAnimation};
+  -webkit-animation: 1s ${fadeAnimation};
+  -moz-animation: 1s ${fadeAnimation};
   animation-delay: ${props => props.delay || "1.6"}s;
   -webkit-animation-delay: ${props => props.delay || "1.6"}s;
+  -moz-animation-delay: ${props => props.delay || "1.6"}s;
   padding: 0 1.5rem;
   margin: 0;
 
@@ -24,13 +27,20 @@ const FadedHeader = styled.h1`
 
 const StyledContainer = styled.div`
   text-align: center;
-  height: ${props => (props.width > 1050 ? "100vh" : "125vh")};
-  margin-top: -6em;
-  padding-top: 40vh;
+  position: relative;
+  height: calc(100vh - 7rem);
+  padding-top: 20vh;
   background: #ffdb01;
   h1 {
     display: ${props => (props.width > 1050 ? "inline-block" : "block")};
     font-size: ${props => (props.width > 1050 ? "6rem" : "4.8rem")};
+  }
+  @media (max-width: 1050px) {
+    padding-top: 10vh;
+  }
+  @media (max-width: 767px) {
+    height: 100vh;
+    padding-top: 25vh;
   }
 `
 
@@ -45,6 +55,7 @@ class CatchPhrase extends React.Component {
     }
     this.updateWindowDimensions = this.updateWindowDimensions.bind(this)
     this.offset = props.disableFirstAnimation ? 10 : 2000
+    this.children = props.children
   }
 
   componentDidMount() {
@@ -80,6 +91,7 @@ class CatchPhrase extends React.Component {
         >
           Alegría
         </FadedHeader>
+        {this.children}
       </StyledContainer>
     )
   }

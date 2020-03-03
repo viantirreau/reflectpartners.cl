@@ -51,7 +51,6 @@
 .embla__button {
   background-color: transparent;
   position: absolute;
-  z-index: 1;
   top: 50%;
   transform: translateY(-50%);
   border: 0;
@@ -97,11 +96,9 @@
     width: 1.5rem;
     height: 1.5rem;
   }
-
   .embla__button--prev {
     left: -1.7rem;
   }
-
   .embla__button--next {
     right: -1.7rem;
   }

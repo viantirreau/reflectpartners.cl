@@ -25,9 +25,9 @@ const StyledSubHeader = styled(Header.Subheader)`
   }
 `
 
-const TextImageHalf = ({ header, text, image, bg }) => {
+const TextImageHalf = ({ header, text, image, bg, reversed }) => {
   return (
-    <Grid columns={2} stackable reversed>
+    <Grid columns={2} stackable reversed={reversed}>
       <Grid.Column>
         <StyledTextContainer>
           <StyledHeader>
