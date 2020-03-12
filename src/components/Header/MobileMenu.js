@@ -2,7 +2,6 @@ import React from "react"
 import { slide as Menu } from "react-burger-menu"
 import Cover from "../Transition"
 import styled from "styled-components"
-import { Header } from "semantic-ui-react"
 
 const StyledCover = styled(Cover)`
   font-weight: 200;
