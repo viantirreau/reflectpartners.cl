@@ -1,6 +1,19 @@
 import React from "react"
 import { slide as Menu } from "react-burger-menu"
 import Cover from "../Transition"
+import styled from "styled-components"
+import { Header } from "semantic-ui-react"
+
+const StyledCover = styled(Cover)`
+  font-weight: 200;
+  font-size: 2em;
+  text-transform: uppercase;
+  color: #fff !important;
+  padding: 0.4em 0;
+  &:hover {
+    color: #ffdb01 !important;
+  }
+`
 
 class MobileMenu extends React.Component {
   render() {
@@ -51,7 +64,13 @@ class MobileMenu extends React.Component {
     }
     return (
       <Menu styles={styles} right outerContainerId={"content"}>
-        <Cover to="/">Inicio</Cover>
+        <StyledCover to="/" state={{ disableFirstAnimation: true }}>
+          Inicio
+        </StyledCover>
+        <StyledCover to="/corporativo">Corporativo</StyledCover>
+        <StyledCover to="/matrimonio">Matrimonio</StyledCover>
+        <StyledCover to="/equipo">Nosotros</StyledCover>
+        <StyledCover to="/cotiza">Cotizar</StyledCover>
       </Menu>
     )
   }

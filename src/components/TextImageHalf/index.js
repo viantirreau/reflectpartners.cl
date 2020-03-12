@@ -21,7 +21,7 @@ const StyledSubHeader = styled(Header.Subheader)`
   &&&& {
     color: rgba(0, 0, 0, 0.8);
     font-weight: 500;
-    font-size: calc(0.5em + 0.3vw);
+    font-size: calc(0.65em + 0.3vw);
   }
 `
 

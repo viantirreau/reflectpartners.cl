@@ -56,7 +56,7 @@ class DesktopMenu extends React.Component {
             ></img>
           </Cover>
         </Menu.Menu>
-        <Container text>
+        <Container textAlign="right">
           <Menu.Menu position="right">
             <Menu.Item>
               <MenuLink
@@ -79,6 +79,9 @@ class DesktopMenu extends React.Component {
                 text="Corporativo"
                 pathname={this.pathname}
               />
+            </Menu.Item>
+            <Menu.Item>
+              <MenuLink to="/cotiza" text="Cotizar" pathname={this.pathname} />
             </Menu.Item>
           </Menu.Menu>
         </Container>

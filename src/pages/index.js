@@ -70,31 +70,44 @@ export default IndexPage
 const Experiencia = () => {
   const data = useStaticQuery(graphql`
     query MyQuery {
-      file(relativePath: { eq: "rp-icon.png" }) {
-        childImageSharp {
-          # Specify the image processing specifications right in the query.
-          fluid {
-            ...GatsbyImageSharpFluid
+      allFile(filter: { relativePath: { regex: "/Gallery-Home/i" } }) {
+        edges {
+          node {
+            childImageSharp {
+              fluid {
+                ...GatsbyImageSharpFluid
+              }
+            }
           }
         }
       }
     }
   `)
-  const gallery = (
-    <Img fluid={data.file.childImageSharp.fluid} alt="Con Reflect Partners" />
+  const gallery = data.allFile.edges.map(edge => (
+    <Img
+      fluid={edge.node.childImageSharp.fluid}
+      alt="Reflect Partners en acción"
+    />
+  ))
+  const carousel = <Carousel>{gallery}</Carousel>
+  const subheader = (
+    <>
+      <p>
+        Usamos la mejor tecnología fotográfica del mercado para que tus
+        invitados no paren de sonreír.
+      </p>
+      <p>
+        Confía en nosotros para plasmar un maravilloso recuerdo de tu
+        matrimonio, evento corporativo, gala, cumpleaños o fiesta de graduación.
+      </p>
+    </>
   )
-  const gallery2 = (
-    <Carousel>
-      {gallery}
-      {gallery}
-      {gallery}
-    </Carousel>
-  )
+  // <p> Trabajamos con gente fantástica y las más reconocidas marcas para crear experiencias únicas. </p>
   return (
     <TextImageHalf
       header="Haz que tu evento sea inolvidable"
-      text="Lorem"
-      image={gallery2}
+      text={subheader}
+      image={carousel}
     />
   )
 }

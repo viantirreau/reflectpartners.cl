@@ -85,10 +85,28 @@
 
 .embla__button--prev {
   left: 0;
+  transition: 0.2s ease-in-out;
+  -moz-transition: 0.2s ease-in-out;
+  -webkit-transition: 0.2s ease-in-out;
+  -o-transition: 0.2s ease-in-out;
+  stroke-width: 0%;
+  stroke: #fff;
+}
+
+.embla__button--prev:hover {
+  fill: #ddd;
 }
 
 .embla__button--next {
   right: 0;
+  transition: 0.2s ease-in-out;
+  -moz-transition: 0.2s ease-in-out;
+  -webkit-transition: 0.2s ease-in-out;
+  -o-transition: 0.2s ease-in-out;
+}
+
+.embla__button--next:hover {
+  fill: #ddd;
 }
 
 @media (max-width: 767px) {
