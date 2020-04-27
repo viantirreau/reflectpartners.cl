@@ -16,6 +16,13 @@ const StyledMenu = styled(({ colored, hidden, ...props }) => (
   opacity: ${props => (props.hidden ? "0" : "100%")};
 `
 
+const StyledMenuItem = styled(({ ...props }) => <Menu.Item {...props} />)`
+  margin: 0.05em;
+  &&& {
+    padding: 0.5em;
+  }
+`
+
 class DesktopMenu extends React.Component {
   constructor(props) {
     super(props)
@@ -58,31 +65,32 @@ class DesktopMenu extends React.Component {
         </Menu.Menu>
         <Container textAlign="right">
           <Menu.Menu position="right">
-            <Menu.Item>
+            <StyledMenuItem>
               <MenuLink
                 to="/"
                 text="Inicio"
                 pathname={this.pathname}
                 state={{ disableFirstAnimation: true }}
+                fitted
               />
-            </Menu.Item>
-            <Menu.Item>
+            </StyledMenuItem>
+            <StyledMenuItem>
               <MenuLink
                 to="/matrimonio"
                 text="Matrimonio"
                 pathname={this.pathname}
               />
-            </Menu.Item>
-            <Menu.Item>
+            </StyledMenuItem>
+            <StyledMenuItem>
               <MenuLink
                 to="/corporativo"
                 text="Corporativo"
                 pathname={this.pathname}
               />
-            </Menu.Item>
-            <Menu.Item>
+            </StyledMenuItem>
+            <StyledMenuItem>
               <MenuLink to="/cotiza" text="Cotizar" pathname={this.pathname} />
-            </Menu.Item>
+            </StyledMenuItem>
           </Menu.Menu>
         </Container>
       </StyledMenu>
