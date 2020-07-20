@@ -12,10 +12,10 @@ import "./layout.css"
 import TopBar from "../Header"
 import Footer from "../Footer"
 
-const Layout = ({ location, children }) => {
+const Layout = ({ location, children, hideMobileMenu }) => {
   return (
     <>
-      <TopBar location={location} />
+      <TopBar location={location} hideMobileMenu={hideMobileMenu} />
       <div id="content">
         <div
           style={{

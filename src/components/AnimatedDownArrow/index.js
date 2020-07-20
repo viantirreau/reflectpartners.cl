@@ -21,10 +21,14 @@ const AnimatedArrow = styled.div`
   -webkit-animation: fade_move_down 2s ease-in-out infinite;
   -moz-animation: fade_move_down 2s ease-in-out infinite;
   animation: fade_move_down 2s ease-in-out infinite;
-  -webkit-animation-delay: 5s;
-  -moz-animation-delay: 5s;
-  animation-delay: 5s;
+  -webkit-animation-delay: 4s;
+  -moz-animation-delay: 4s;
+  animation-delay: 4s;
   opacity: 0;
+  padding: 0.6em;
+  &:hover {
+    cursor: pointer;
+  }
 
   /*animated scroll arrow animation*/
   @-webkit-keyframes fade_move_down {
@@ -68,8 +72,8 @@ const AnimatedArrow = styled.div`
   }
 `
 
-const DownArrow = () => {
-  return <AnimatedArrow />
+const DownArrow = props => {
+  return <AnimatedArrow onClick={props.handleClick} />
 }
 
 export default DownArrow

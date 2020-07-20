@@ -35,7 +35,7 @@ class DesktopMenu extends React.Component {
     }
   }
 
-  componentWillMount() {
+  componentDidMount() {
     if (this.pathname === "/") {
       setTimeout(() => this.setState({ hidden: false }), 2400)
     }
@@ -65,13 +65,12 @@ class DesktopMenu extends React.Component {
         </Menu.Menu>
         <Container textAlign="right">
           <Menu.Menu position="right">
-            <StyledMenuItem>
+            <StyledMenuItem fitted>
               <MenuLink
                 to="/"
                 text="Inicio"
                 pathname={this.pathname}
                 state={{ disableFirstAnimation: true }}
-                fitted
               />
             </StyledMenuItem>
             <StyledMenuItem>

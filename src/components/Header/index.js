@@ -9,7 +9,7 @@ const getWidth = () => {
   return isSSR ? Responsive.onlyTablet.minWidth : window.innerWidth
 }
 
-const Header = ({ location }) => {
+const Header = ({ location, hideMobileMenu }) => {
   const Desktop = isSSR ? (
     ""
   ) : (
@@ -17,7 +17,11 @@ const Header = ({ location }) => {
       <DesktopMenu location={location} />
     </Headroom>
   )
-  const Mobile = isSSR ? "" : <MobileMenu location={location} />
+  const Mobile = isSSR ? (
+    ""
+  ) : (
+    <MobileMenu location={location} hide={hideMobileMenu} />
+  )
   return (
     <>
       <Responsive maxWidth={Responsive.onlyMobile.maxWidth} getWidth={getWidth}>

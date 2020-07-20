@@ -25,7 +25,10 @@ class MobileMenu extends React.Component {
         top: "36px",
       },
       bmBurgerBars: {
-        background: "#373a47",
+        background: this.props.hide ? "#00000000" : "#373a47",
+        "-webkit-transition": "background-color linear 1s",
+        "-ms-transition": "background-color linear 1s",
+        transition: "background-color linear 1s",
       },
       bmBurgerBarsHover: {
         background: "#a90000",

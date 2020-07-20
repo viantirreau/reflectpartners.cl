@@ -16,11 +16,14 @@ import Img from "gatsby-image"
 import Carousel from "../components/Carousel"
 import AnimatedDownArrow from "../components/AnimatedDownArrow"
 
+import { animateScroll as scroll } from "react-scroll"
+
 class IndexPage extends React.Component {
   constructor(props) {
     super(props)
     this.location = this.props.location
-    this.state = { grow: false, finished: false }
+    let ref = React.createRef()
+    this.state = { grow: false, finished: false, ref, hideMobileMenu: true }
   }
   componentDidMount() {
     this.setState({ grow: true })
@@ -28,9 +31,14 @@ class IndexPage extends React.Component {
       this.setState({ wrapperBg: "transparent" })
     }, 400)
     setTimeout(() => {
-      this.setState({ finished: true })
+      this.setState({ finished: true, hideMobileMenu: false })
     }, 1700)
   }
+  scrollToRef(ref) {
+    console.log("Called scrollToRef", ref)
+    scroll.scrollTo(ref.current.offsetTop - 30, { smooth: true })
+  }
+
   render() {
     return (
       <TransitionState>
@@ -48,15 +56,22 @@ class IndexPage extends React.Component {
                 <PageLoaderRipple grow={this.state.grow} />
               </PageLoaderWrapper>
             </PageLoader>
-            <Layout location={this.location}>
+            <Layout
+              location={this.location}
+              hideMobileMenu={this.state.hideMobileMenu}
+            >
               <SEO title="#ReflejaTuAlegría" />
               <CatchPhrase
                 disableFirstAnimation={entry.state.disableFirstAnimation}
               >
-                <AnimatedDownArrow />
+                <AnimatedDownArrow
+                  handleClick={() => this.scrollToRef(this.state.ref)}
+                />
               </CatchPhrase>
               <Spacer pixels={50} />
-              <Experiencia />
+              <div ref={this.state.ref}>
+                <Experiencia />
+              </div>
             </Layout>
           </>
         )}
@@ -83,10 +98,11 @@ const Experiencia = () => {
       }
     }
   `)
-  const gallery = data.allFile.edges.map(edge => (
+  const gallery = data.allFile.edges.map((edge, idx) => (
     <Img
       fluid={edge.node.childImageSharp.fluid}
       alt="Reflect Partners en acción"
+      key={idx}
     />
   ))
   const carousel = <Carousel>{gallery}</Carousel>

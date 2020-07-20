@@ -1,13 +1,11 @@
 import React, { useState, useEffect, useCallback } from "react"
 import { useEmblaCarousel } from "embla-carousel/react"
-
 import useInterval from "./useInterval"
 import { DotButton, PrevButton, NextButton } from "./EmblaCarouselButtons"
 import "./css/embla.css"
 
 const EmblaCarouselComponent = ({ autoplay, delayLength, children }) => {
   const [EmblaCarouselReact, embla] = useEmblaCarousel({ loop: true })
-
   const [prevBtnEnabled, setPrevBtnEnabled] = useState(false)
   const [nextBtnEnabled, setNextBtnEnabled] = useState(false)
   const [selectedIndex, setSelectedIndex] = useState(0)
@@ -52,9 +50,9 @@ const EmblaCarouselComponent = ({ autoplay, delayLength, children }) => {
           htmlTagName="div"
         >
           <div className="embla__container">
-            {children.map((Child, index) => (
+            {children.map((child, index) => (
               <div className="embla__slide" key={index}>
-                <div className="embla__slide__inner">{Child}</div>
+                <div className="embla__slide__inner">{child}</div>
               </div>
             ))}
           </div>
