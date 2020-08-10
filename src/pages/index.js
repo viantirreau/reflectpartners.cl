@@ -9,14 +9,13 @@ import {
   PageLoaderWrapper,
   PageLoaderRipple,
 } from "../components/GrowCircle"
-import TextImageHalf from "../components/TextImageHalf"
-import { useStaticQuery, graphql } from "gatsby"
+
 import Spacer from "../components/Spacer"
-import Img from "gatsby-image"
-import Carousel from "../components/Carousel"
+
 import AnimatedDownArrow from "../components/AnimatedDownArrow"
 
 import { animateScroll as scroll } from "react-scroll"
+import Experiencia from "../fragments/Experiencia"
 
 class IndexPage extends React.Component {
   constructor(props) {
@@ -81,49 +80,3 @@ class IndexPage extends React.Component {
 }
 
 export default IndexPage
-
-const Experiencia = () => {
-  const data = useStaticQuery(graphql`
-    query MyQuery {
-      allFile(filter: { relativePath: { regex: "/Gallery-Home/i" } }) {
-        edges {
-          node {
-            childImageSharp {
-              fluid {
-                ...GatsbyImageSharpFluid
-              }
-            }
-          }
-        }
-      }
-    }
-  `)
-  const gallery = data.allFile.edges.map((edge, idx) => (
-    <Img
-      fluid={edge.node.childImageSharp.fluid}
-      alt="Reflect Partners en acción"
-      key={idx}
-    />
-  ))
-  const carousel = <Carousel>{gallery}</Carousel>
-  const subheader = (
-    <>
-      <p>
-        Usamos la mejor tecnología fotográfica del mercado para que tus
-        invitados no paren de sonreír.
-      </p>
-      <p>
-        Confía en nosotros para plasmar un maravilloso recuerdo de tu
-        matrimonio, evento corporativo, gala, cumpleaños o fiesta de graduación.
-      </p>
-    </>
-  )
-  // <p> Trabajamos con gente fantástica y las más reconocidas marcas para crear experiencias únicas. </p>
-  return (
-    <TextImageHalf
-      header="Haz que tu evento sea inolvidable"
-      text={subheader}
-      image={carousel}
-    />
-  )
-}

@@ -22,6 +22,7 @@ const StyledFooter = styled.footer`
   padding: 60px 20px;
   background: #1d2126;
   font-size: 1.2em;
+  margin: 2em 0 0.5em 0;
 `
 
 const ProdServ = () => (

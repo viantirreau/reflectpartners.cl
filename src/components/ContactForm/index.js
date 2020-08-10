@@ -9,7 +9,7 @@ const StyledDropDown = styled(({ label, ...props }) => (
   <Form.Field control={Select} scrolling label={label} {...props} />
 ))`
   && .visible .menu {
-    min-width: 100.6% !important;
+    min-width: calc(100% + 2px) !important;
   }
 `
 
@@ -49,8 +49,7 @@ const planOptions = [
 ]
 
 const ContactForm = () => {
-  const [setNewDate] = useState(null)
-  const onChange = (event, data) => setNewDate(data.value)
+  const [date, setDate] = useState(new Date())
 
   return (
     <Form>
@@ -74,7 +73,7 @@ const ContactForm = () => {
       <Form.Field required>
         <label htmlFor="calendar">Fecha del evento</label>
         <SemanticDatepicker
-          onChange={onChange}
+          onChange={setDate}
           locale="es-ES"
           id="calendar"
           format="DD/MM/YYYY"
