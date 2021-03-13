@@ -1,15 +1,17 @@
 import React from "react"
-import { Responsive } from "semantic-ui-react"
+import { Media, MediaContextProvider } from "../Media"
 
 const Spacer = ({ pixels }) => {
   return (
     <>
-      <Responsive maxWidth={Responsive.onlyMobile.maxWidth}>
-        <div style={{ paddingTop: pixels }}></div>
-      </Responsive>
-      <Responsive minWidth={Responsive.onlyTablet.minWidth}>
-        <div style={{ paddingTop: 2 * pixels }}></div>
-      </Responsive>
+      <MediaContextProvider>
+        <Media lessThan="mobileLandscape">
+          <div style={{ paddingTop: pixels }}></div>
+        </Media>
+        <Media greaterThanOrEqual="mobileLandscape">
+          <div style={{ paddingTop: 2 * pixels }}></div>
+        </Media>
+      </MediaContextProvider>
     </>
   )
 }

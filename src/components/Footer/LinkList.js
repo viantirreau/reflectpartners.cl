@@ -31,24 +31,22 @@ export const WhiteTitle = styled(Header)`
   font-size: 0.9em;
 `
 
-export const Title = ({ title, children }) => {
-  return (
-    <>
-      <ul style={{ marginLeft: 0, marginBottom: "2em" }}>
-        <List>
-          <YellowHeader>{title}</YellowHeader>
-        </List>
-        {children.map((child, index) => (
-          <List key={index}>{child}</List>
-        ))}
-      </ul>
-    </>
-  )
-}
+export const Title = ({ title, children }) => (
+  <>
+    <ul style={{ marginLeft: 0, marginBottom: "2em" }}>
+      <List>
+        <YellowHeader>{title}</YellowHeader>
+      </List>
+      {children.map((child, index) => (
+        <List key={index}>{child}</List>
+      ))}
+    </ul>
+  </>
+)
 
-export const Item = ({ to, children }) => {
-  return <StyledLink to={to}>{children}</StyledLink>
-}
+export const Item = ({ to, children }) => (
+  <StyledLink to={to}>{children}</StyledLink>
+)
 
 Title.propTypes = {
   children: PropTypes.node.isRequired,

@@ -49,7 +49,7 @@ const planOptions = [
 ]
 
 const ContactForm = () => {
-  const [date, setDate] = useState(new Date())
+  const [, setDate] = useState(new Date())
 
   return (
     <Form>
@@ -88,10 +88,6 @@ const ContactForm = () => {
         control={Input}
         label="Hora de inicio del servicio"
         placeholder="21:30 hrs."
-        // error={{
-        //   content: "Ingresa un correo válido",
-        //   pointing: "below",
-        // }}
       />
       <StyledDropDown
         required

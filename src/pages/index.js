@@ -68,9 +68,7 @@ class IndexPage extends React.Component {
                 />
               </CatchPhrase>
               <Spacer pixels={50} />
-              <div ref={this.state.ref}>
-                <Experiencia />
-              </div>
+              <Experiencia />
             </Layout>
           </>
         )}

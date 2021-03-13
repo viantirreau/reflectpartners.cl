@@ -4,25 +4,25 @@ import styled from "styled-components"
 import Spacer from "../Spacer"
 
 const StyledTextContainer = styled.div`
-  padding: ${props => props.padding || "0 0 0 10%"};
+  padding: ${(props) => props.padding || "0 0 0 10%"};
 `
 const StyledImageContainer = styled.div`
   padding: 10%;
-  background-color: ${props => props.bg || "#ffdb01"};
+  background-color: ${(props) => props.bg || "#ffdb01"};
 `
 const StyledHeader = styled(Header)`
   &&& {
     font-size: calc(1.8em + 1.3vw);
     font-weight: 900;
     font-family: "Lato";
-    text-align: ${props => props.align || "left"};
+    text-align: ${(props) => props.align || "left"};
   }
 `
 const StyledSubHeader = styled(Header.Subheader)`
   &&&& {
     color: rgba(0, 0, 0, 0.8);
     font-weight: 500;
-    font-size: calc(${props => props.size || "0.65em"} + 0.3vw);
+    font-size: calc(${(props) => props.size || "0.65em"} + 0.3vw);
   }
 `
 

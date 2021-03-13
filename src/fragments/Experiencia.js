@@ -1,7 +1,7 @@
 import React from "react"
 import TextImageHalf from "../components/TextImageHalf"
 import { useStaticQuery, graphql } from "gatsby"
-import Img from "gatsby-image"
+import { GatsbyImage } from "gatsby-plugin-image"
 import Carousel from "../components/Carousel"
 import ImageCircle from "../components/ImageCircle"
 import Lottie from "lottie-react-web"
@@ -16,9 +16,7 @@ const Experiencia = () => {
         edges {
           node {
             childImageSharp {
-              fluid {
-                ...GatsbyImageSharpFluid
-              }
+              gatsbyImageData(layout: FULL_WIDTH)
             }
           }
         }
@@ -26,8 +24,8 @@ const Experiencia = () => {
     }
   `)
   const gallery = data.allFile.edges.map((edge, idx) => (
-    <Img
-      fluid={edge.node.childImageSharp.fluid}
+    <GatsbyImage
+      image={edge.node.childImageSharp.gatsbyImageData}
       alt="Reflect Partners en acción"
       key={idx}
     />

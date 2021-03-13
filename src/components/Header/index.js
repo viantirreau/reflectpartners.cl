@@ -1,35 +1,38 @@
 import React from "react"
-import { Responsive } from "semantic-ui-react"
 import DesktopMenu from "./DesktopMenu"
 import MobileMenu from "./MobileMenu"
 import Headroom from "react-headroom"
+import { Media, MediaContextProvider } from "../Media"
 
-const isSSR = typeof window === "undefined"
-const getWidth = () => {
-  return isSSR ? Responsive.onlyTablet.minWidth : window.innerWidth
-}
+// const isSSR = typeof window === "undefined"
 
 const Header = ({ location, hideMobileMenu }) => {
-  const Desktop = isSSR ? (
-    ""
-  ) : (
-    <Headroom upTolerance={20} style={{ background: "#ffdb01" }}>
-      <DesktopMenu location={location} />
-    </Headroom>
-  )
-  const Mobile = isSSR ? (
-    ""
-  ) : (
-    <MobileMenu location={location} hide={hideMobileMenu} />
-  )
+  // const Desktop = isSSR ? (
+  //   ""
+  // ) : (
+  //   <Headroom upTolerance={20} style={{ background: "#ffdb01" }}>
+  //     <DesktopMenu location={location} />
+  //   </Headroom>
+  // )
+
+  // const Mobile = isSSR ? (
+  //   ""
+  // ) : (
+  //   <MobileMenu location={location} hide={hideMobileMenu} />
+  // )
+
   return (
     <>
-      <Responsive maxWidth={Responsive.onlyMobile.maxWidth} getWidth={getWidth}>
-        {Mobile}
-      </Responsive>
-      <Responsive minWidth={Responsive.onlyTablet.minWidth} getWidth={getWidth}>
-        {Desktop}
-      </Responsive>
+      <MediaContextProvider>
+        <Media lessThan="tablet">
+          <MobileMenu location={location} hide={hideMobileMenu} />
+        </Media>
+        <Media greaterThanOrEqual="tablet">
+          <Headroom upTolerance={20} style={{ background: "#ffdb01" }}>
+            <DesktopMenu location={location} />
+          </Headroom>
+        </Media>
+      </MediaContextProvider>
     </>
   )
 }

@@ -1,7 +1,7 @@
 module.exports = {
   siteMetadata: {
     title: `Reflect Partners`,
-    description: `Reflect Partners ofrece servicios fotográficos y de entretención en diversos tipos de eventos, tales como matrimonios, cumpleaños, eventos corporativos y muchos más`,
+    description: `Reflect Partners ofrece servicios fotográficos y de entretención en diversos tipos de eventos, tales como matrimonios, cumpleaños, eventos corporativos y muchos más.`,
     author: `@viantirreau`,
   },
   plugins: [
@@ -13,6 +13,7 @@ module.exports = {
         path: `${__dirname}/src/images`,
       },
     },
+    `gatsby-plugin-image`,
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
     {
