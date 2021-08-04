@@ -1,13 +1,19 @@
 import React from "react"
 import { Grid, Header } from "semantic-ui-react"
 import styled from "styled-components"
+import PillButton from "../PillButton"
 import Spacer from "../Spacer"
 
 const StyledTextContainer = styled.div`
   padding: ${(props) => props.padding || "0 0 0 10%"};
 `
 const StyledImageContainer = styled.div`
-  padding: 10%;
+  padding: ${(props) => props.vertical ? "5% 2.5% 0% 2.5%" : "5% 4% 0% 4%"};
+  width: ${(props) => props.vertical ? "50%" : "auto"};
+  @media only screen and (max-width: 768px){
+    margin-top: 5%;
+    width: ${(props) => props.vertical ? "100%" : "auto"};
+  }
   background-color: ${(props) => props.bg || "#ffdb01"};
 `
 const StyledHeader = styled(Header)`
@@ -37,7 +43,7 @@ const TextImageHalf = ({
 }) => {
   let textPortion = (
     <StyledTextContainer padding={vertical ? "0 10%" : "0 0 0 10%"}>
-      <StyledHeader align={vertical ? "center" : "left"}>
+      <StyledHeader align="left">
         {header}
         <Spacer pixels={10} />
         <StyledSubHeader size={secondarySize}>{text}</StyledSubHeader>
@@ -46,7 +52,7 @@ const TextImageHalf = ({
   )
 
   let imagePortion = (
-    <StyledImageContainer bg={bg || "none"}>{image}</StyledImageContainer>
+    <StyledImageContainer vertical={vertical} bg={bg || "none"}>{image}</StyledImageContainer>
   )
 
   return (
@@ -58,12 +64,26 @@ const TextImageHalf = ({
     >
       {vertical ? (
         <>
-          <Grid.Row>{imagePortion}</Grid.Row>
-          <Grid.Row>{textPortion}</Grid.Row>
+          {reversed ? (
+            <>
+              <Grid.Row>{textPortion}</Grid.Row>
+              <Grid.Row centered>{imagePortion}</Grid.Row>
+            </>
+          ) : (
+            <>
+              <Grid.Row centered>{imagePortion}</Grid.Row>
+              <Grid.Row>{textPortion}</Grid.Row>
+            </>
+          )}
         </>
       ) : (
         <>
-          <Grid.Column>{textPortion}</Grid.Column>
+          <Grid.Column><>
+            {textPortion}
+            <PillButton link="/cotiza" />
+          </>
+          </Grid.Column>
+
           <Grid.Column>{imagePortion}</Grid.Column>
         </>
       )}
