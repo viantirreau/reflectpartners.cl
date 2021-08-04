@@ -64,11 +64,11 @@ const Corporativo = ({ location }) => {
 
   return (
     <Layout location={location}>
-      <Container style={{ paddingTop: "4em" }}>
+      <Container style={{ paddingTop: "4em" }} fluid>
         <StyledBreadcrumb>
           <Breadcrumb divider='/' sections={breadcrumbSections} />
         </StyledBreadcrumb>
-        <Spacer pixels={20} />
+        <Spacer pixels={40} />
         <TextImageHalf header="Lleva tus eventos corporativos a otro nivel"
           text={subheader}
           image={carousel}

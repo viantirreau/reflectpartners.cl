@@ -64,7 +64,7 @@ const Matrimonio = ({ location }) => {
         <StyledBreadcrumb>
           <Breadcrumb divider='/' sections={breadcrumbSections} />
         </StyledBreadcrumb>
-        <Spacer pixels={20} />
+        <Spacer pixels={40} />
         <TextImageHalf header="Una experiencia inolvidable en tu matrimonio"
           text={subheader}
           image={carousel}
