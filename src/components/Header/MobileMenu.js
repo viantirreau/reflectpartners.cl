@@ -71,7 +71,7 @@ class MobileMenu extends React.Component {
         </StyledCover>
         <StyledCover to="/corporativo">Corporativo</StyledCover>
         <StyledCover to="/matrimonio">Matrimonio</StyledCover>
-        <StyledCover to="/equipo">Nosotros</StyledCover>
+        <StyledCover to="/nosotros">Nosotros</StyledCover>
         <StyledCover to="/cotiza">Cotizar</StyledCover>
       </Menu>
     )

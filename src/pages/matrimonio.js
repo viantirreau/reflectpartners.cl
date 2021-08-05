@@ -1,19 +1,12 @@
 import React from "react"
 import Layout from "../components/Layout"
-import Spacer from "../components/Spacer"
 import { useStaticQuery, graphql } from "gatsby"
 import { GatsbyImage } from "gatsby-plugin-image"
 import Carousel from "../components/Carousel"
-import TextImageHalf from "../components/TextImageHalf"
-import { Breadcrumb, Container } from "semantic-ui-react"
-import styled from "styled-components"
-
-const StyledBreadcrumb = styled.div`
-  @media only screen and (min-width: 768px){
-    display: none;
-  }
-  margin: -1em 0 0 1em;
-`
+import { TextImageHalf } from "../components/TextImageHalf"
+import { Container } from "semantic-ui-react"
+import RPBreadcrumb from "../components/Breadcrumb"
+import PillButton from "../components/PillButton"
 
 const Matrimonio = ({ location }) => {
 
@@ -61,13 +54,11 @@ const Matrimonio = ({ location }) => {
   return (
     <Layout location={location}>
       <Container fluid style={{ paddingTop: "3em" }}>
-        <StyledBreadcrumb>
-          <Breadcrumb divider='/' sections={breadcrumbSections} />
-        </StyledBreadcrumb>
-        <Spacer pixels={40} />
+        <RPBreadcrumb sections={breadcrumbSections} />
         <TextImageHalf header="Una experiencia inolvidable en tu matrimonio"
           text={subheader}
           image={carousel}
+          pillButton={<PillButton link="/cotiza" />}
           bg="#ffdb01"
         />
 

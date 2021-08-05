@@ -1,5 +1,5 @@
 import React from "react"
-import TextImageHalf from "../components/TextImageHalf"
+import { TextImageHalf } from "../components/TextImageHalf"
 import { useStaticQuery, graphql } from "gatsby"
 import { GatsbyImage } from "gatsby-plugin-image"
 import Carousel from "../components/Carousel"

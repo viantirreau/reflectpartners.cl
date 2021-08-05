@@ -1,20 +1,15 @@
 import React from "react"
 import Layout from "../components/Layout"
-import Spacer from "../components/Spacer"
 import { useStaticQuery, graphql } from "gatsby"
 import { GatsbyImage } from "gatsby-plugin-image"
 import Carousel from "../components/Carousel"
-import TextImageHalf from "../components/TextImageHalf"
+import { TextImageHalf } from "../components/TextImageHalf"
 import PillButton from "../components/PillButton"
-import { Breadcrumb, Container } from "semantic-ui-react"
-import styled from "styled-components"
+import { Container } from "semantic-ui-react"
+import RPBreadcrumb from "../components/Breadcrumb"
+import CompanyLogos from "../components/CompanyLogos"
 
-const StyledBreadcrumb = styled.div`
-  @media only screen and (min-width: 768px){
-    display: none;
-  }
-  margin: -1em 0 0 1em;
-`
+
 const Corporativo = ({ location }) => {
   const data = useStaticQuery(graphql`
     query CorporativoQuery {
@@ -42,7 +37,6 @@ const Corporativo = ({ location }) => {
   const subheader = (
     <>
       <p>
-        El Espejo Mágico de ReflectPartners elevará al siguiente nivel la producción de tu evento.
         Fiestas, activaciones, simposios, eventos de cierre de año, fidelizaciones y lanzamientos
         de productos encajan perfectamente con el diseño y la ambientación sobria, lujosa y llamativa del Espejo.
 
@@ -51,7 +45,6 @@ const Corporativo = ({ location }) => {
         Envía instantáneamente de manera digital las fotografías a los invitados, imprime a demanda y entrégale
         entrención a tus invitados con el cotillón premium, para que tu evento se escape de la tradición.
       </p>
-      <PillButton link="/cotiza" />
     </>
   )
 
@@ -64,18 +57,17 @@ const Corporativo = ({ location }) => {
 
   return (
     <Layout location={location}>
-      <Container style={{ paddingTop: "4em" }} fluid>
-        <StyledBreadcrumb>
-          <Breadcrumb divider='/' sections={breadcrumbSections} />
-        </StyledBreadcrumb>
-        <Spacer pixels={40} />
+      <Container fluid style={{ paddingTop: "3em" }}>
+        <RPBreadcrumb sections={breadcrumbSections} />
         <TextImageHalf header="Lleva tus eventos corporativos a otro nivel"
           text={subheader}
           image={carousel}
           vertical={true}
           reversed={true}
+          pillButton={<PillButton link="/cotiza" />}
           bg="#ffdb01"
         />
+        <CompanyLogos />
       </Container>
     </Layout>
   )
