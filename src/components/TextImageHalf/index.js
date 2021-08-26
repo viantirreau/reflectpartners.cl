@@ -76,11 +76,14 @@ const TextImageHalf = ({
             <>
               <Grid.Row>{textPortion}</Grid.Row>
               <Grid.Row centered>{imagePortion}</Grid.Row>
+              <Grid.Row centered>{pillButton}</Grid.Row>
+
             </>
           ) : (
             <>
               <Grid.Row centered>{imagePortion}</Grid.Row>
               <Grid.Row>{textPortion}</Grid.Row>
+              <Grid.Row centered>{pillButton}</Grid.Row>
             </>
           )}
         </>

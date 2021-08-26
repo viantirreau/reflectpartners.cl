@@ -8,6 +8,7 @@ import Lottie from "lottie-react-web"
 import faces from "../animations/faces.json"
 import x from "../animations/x.json"
 import { Grid } from "semantic-ui-react"
+import PillButton from "../components/PillButton"
 
 const Experiencia = () => {
   const data = useStaticQuery(graphql`
@@ -63,6 +64,7 @@ const Experiencia = () => {
         header="Haz que tu evento sea inolvidable"
         text={subheader}
         image={carousel}
+        pillButton={<PillButton link="/cotiza" />}
         bg="#ffdb01"
       />
       <Grid stackable={true} columns={2} rows={1}>

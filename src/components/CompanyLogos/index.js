@@ -5,10 +5,17 @@ import styled from "styled-components"
 
 
 const StyledGridContainer = styled.div`
-    display:table;
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 2em;
+    justify-content:center;
     margin-left: auto !important;
     margin-right: auto !important;
-    width: 80%;
+    width: 60%;
+    
+    @media (max-width: 767px){
+        width: 90%;
+    }
 `
 
 
@@ -16,13 +23,20 @@ const StyledGridContainer = styled.div`
 const StyledSVG = styled.img`
     filter: saturate(0);
     transition: 0.2s;
-    max-height: 100px;
-    max-width: 100px;
+    display:flex;
+    max-height: 160px;
+    max-width: 160px;
+    margin: 0.8em;
     width: auto;
     height: auto;
 
     &:hover {
         filter: none;
+    }
+
+    @media (max-width: 767px){
+        max-height: 120px;
+        max-width: 120px;
     }
 `
 
@@ -45,7 +59,6 @@ const CompanyLogos = () => {
                     return <StyledSVG src={e.node.publicURL} key={e.node.publicURL}></StyledSVG>
                 })}
             </StyledGridContainer>
-            Logo {JSON.stringify()}
         </div>
     )
 }

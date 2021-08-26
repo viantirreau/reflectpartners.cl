@@ -16,6 +16,7 @@ import AnimatedDownArrow from "../components/AnimatedDownArrow"
 
 import { animateScroll as scroll } from "react-scroll"
 import Experiencia from "../fragments/Experiencia"
+import YoutubeEmbed from "../components/Video"
 
 class IndexPage extends React.Component {
   constructor(props) {
@@ -69,6 +70,7 @@ class IndexPage extends React.Component {
               </CatchPhrase>
               <Spacer pixels={50} />
               <Experiencia />
+              <YoutubeEmbed embedId="fcOzEybc1mg" />
             </Layout>
           </>
         )}

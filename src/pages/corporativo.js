@@ -5,7 +5,7 @@ import { GatsbyImage } from "gatsby-plugin-image"
 import Carousel from "../components/Carousel"
 import { TextImageHalf } from "../components/TextImageHalf"
 import PillButton from "../components/PillButton"
-import { Container } from "semantic-ui-react"
+import { Container, GridRow } from "semantic-ui-react"
 import RPBreadcrumb from "../components/Breadcrumb"
 import CompanyLogos from "../components/CompanyLogos"
 
@@ -67,7 +67,9 @@ const Corporativo = ({ location }) => {
           pillButton={<PillButton link="/cotiza" />}
           bg="#ffdb01"
         />
-        <CompanyLogos />
+        <GridRow textAlign="right">
+          <CompanyLogos />
+        </GridRow>
       </Container>
     </Layout>
   )
