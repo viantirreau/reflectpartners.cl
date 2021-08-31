@@ -161,7 +161,15 @@ const ContactForm = () => {
         placeholder="El plan que te gustaría cotizar"
       />
       <Form.Field
-        id="form-textarea-control-opinion"
+        id="form-location"
+        required
+        {...register("location")}
+        control={Input}
+        label="Dónde es tu evento (comuna, centro de eventos, etc.)"
+        placeholder="Sala Gente Omnium"
+      />
+      <Form.Field
+        id="form-textarea-control-description"
         {...register("description")}
         control={TextArea}
         label="Describe tu evento"
